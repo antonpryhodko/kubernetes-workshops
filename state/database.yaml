@@ -28,7 +28,7 @@ spec:
     tier: db
   clusterIP: None
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: lobsters-sql
@@ -38,6 +38,10 @@ metadata:
 spec:
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      app: lobsters
+      tier: db
   template:
     metadata:
       labels:
